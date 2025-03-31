@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Sparkles, Code, Globe, Github, Linkedin, Mail, Phone } from "lucide-react";
@@ -185,7 +186,8 @@ const HeroSection = () => {
         </Button>
       </div>
 
-      <style jsx>{`
+      <style>
+        {`
         @keyframes float {
           0%, 100% { transform: translateY(0) rotate(45deg); }
           50% { transform: translateY(-20px) rotate(45deg); }
@@ -260,7 +262,8 @@ const HeroSection = () => {
             transform: translate(0, 0);
           }
         }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 };
