@@ -36,11 +36,11 @@ const Index = () => {
     });
     
     // Update document title with animation
-    const titles = ["Portfolio", "Design", "Develop", "Deliver"];
+    const titles = ["Lucky Yaduvanshi", "Web Developer", "UI Designer", "Full Stack Developer"];
     let currentTitleIndex = 0;
     
     const titleInterval = setInterval(() => {
-      document.title = `${titles[currentTitleIndex]} | Creative Professional`;
+      document.title = `${titles[currentTitleIndex]} | Portfolio`;
       currentTitleIndex = (currentTitleIndex + 1) % titles.length;
     }, 2000);
     

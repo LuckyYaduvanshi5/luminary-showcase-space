@@ -1,12 +1,11 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Sparkles, Code, Globe } from "lucide-react";
+import { ArrowDown, Sparkles, Code, Globe, Github, Linkedin, Mail, Phone } from "lucide-react";
 
 const HeroSection = () => {
   const [typewriterText, setTypewriterText] = useState("");
   const [animatedBackground, setAnimatedBackground] = useState(0);
-  const fullText = "Transforming Ideas into Digital Excellence";
+  const fullText = "Full-stack Developer & Web Designer";
   
   useEffect(() => {
     let currentIndex = 0;
@@ -77,12 +76,12 @@ const HeroSection = () => {
       <div className="relative z-10 max-w-4xl mx-auto backdrop-blur-sm p-8 rounded-xl bg-black/30">
         <div className="flex items-center justify-center gap-3 mb-4">
           <Sparkles className="h-6 w-6 text-[#D946EF]" />
-          <span className="text-sm uppercase tracking-widest text-[#D946EF]">Portfolio Showcase</span>
+          <span className="text-sm uppercase tracking-widest text-[#D946EF]">Web Developer</span>
           <Sparkles className="h-6 w-6 text-[#D946EF]" />
         </div>
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
-          <span className="text-gradient-cyberpunk">Design. Develop. Deliver.</span>
+          <span className="text-gradient-cyberpunk">Lucky Yaduvanshi</span>
         </h1>
         
         <div className="flex items-center justify-center gap-4 mb-4">
@@ -125,16 +124,53 @@ const HeroSection = () => {
         </div>
         
         <div className="mt-12 flex items-center justify-center gap-8">
-          {["5+ Years", "100+ Projects", "50+ Clients"].map((stat, index) => (
-            <div key={index} className="text-center">
-              <p className="text-sm text-gray-400">
-                {stat.split(" ")[1]}
-              </p>
-              <p className="text-xl font-bold text-white">
-                {stat.split(" ")[0]}
-              </p>
-            </div>
-          ))}
+          <div className="text-center">
+            <p className="text-sm text-gray-400">
+              Years
+            </p>
+            <p className="text-xl font-bold text-white">
+              2+
+            </p>
+          </div>
+          <div className="text-center">
+            <p className="text-sm text-gray-400">
+              Projects
+            </p>
+            <p className="text-xl font-bold text-white">
+              20+
+            </p>
+          </div>
+          <div className="text-center">
+            <p className="text-sm text-gray-400">
+              Clients
+            </p>
+            <p className="text-xl font-bold text-white">
+              15+
+            </p>
+          </div>
+        </div>
+        
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <a href="https://github.com/LuckyYaduvanshi5" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="icon" className="rounded-full text-white hover:text-neon-pink hover:bg-white/10">
+              <Github className="h-5 w-5" />
+            </Button>
+          </a>
+          <a href="https://www.linkedin.com/in/lucky-yaduvanshi/" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="icon" className="rounded-full text-white hover:text-neon-blue hover:bg-white/10">
+              <Linkedin className="h-5 w-5" />
+            </Button>
+          </a>
+          <a href="mailto:luckyyaduvanshi5@gmail.com" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="icon" className="rounded-full text-white hover:text-neon-purple hover:bg-white/10">
+              <Mail className="h-5 w-5" />
+            </Button>
+          </a>
+          <a href="tel:+919667907515" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="icon" className="rounded-full text-white hover:text-neon-green hover:bg-white/10">
+              <Phone className="h-5 w-5" />
+            </Button>
+          </a>
         </div>
       </div>
       
@@ -149,7 +185,7 @@ const HeroSection = () => {
         </Button>
       </div>
 
-      <style>{`
+      <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0) rotate(45deg); }
           50% { transform: translateY(-20px) rotate(45deg); }

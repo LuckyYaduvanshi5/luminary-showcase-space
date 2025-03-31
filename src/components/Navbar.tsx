@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -29,27 +29,18 @@ const Navbar = () => {
     }`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="text-2xl font-bold text-glow bg-clip-text text-transparent bg-gradient-to-r from-neon-pink to-neon-blue">
-          <span className="animate-glow">Portfolio</span>
+          <span className="animate-glow">Lucky Yaduvanshi</span>
         </div>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {['home', 'projects', 'skills', 'about', 'services', 'contact'].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollTo(item)}
-              className="text-white hover:text-neon-pink transition-colors uppercase tracking-wide text-sm"
-            >
-              {item}
-            </button>
-          ))}
+        {/* Desktop View - Only Contact Button */}
+        <div className="hidden md:block">
           <Button
             onClick={() => scrollTo('contact')}
             className="bg-transparent border border-neon-pink text-neon-pink hover:bg-neon-pink hover:text-black neon-box-shadow transition-all"
           >
-            Hire Me
+            <Download className="mr-2 h-4 w-4" /> Resume
           </Button>
-        </nav>
+        </div>
         
         {/* Mobile Navigation Toggle */}
         <Button 
@@ -65,23 +56,14 @@ const Navbar = () => {
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden glass-panel animate-fade-in absolute top-full left-0 right-0 py-4">
-          <nav className="flex flex-col space-y-4 items-center">
-            {['home', 'projects', 'skills', 'about', 'services', 'contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollTo(item)}
-                className="text-white hover:text-neon-pink transition-colors uppercase tracking-wide text-sm py-2"
-              >
-                {item}
-              </button>
-            ))}
+          <div className="flex flex-col space-y-4 items-center">
             <Button
               onClick={() => scrollTo('contact')}
               className="w-32 bg-transparent border border-neon-pink text-neon-pink hover:bg-neon-pink hover:text-black neon-box-shadow transition-all"
             >
-              Hire Me
+              <Download className="mr-2 h-4 w-4" /> Resume
             </Button>
-          </nav>
+          </div>
         </div>
       )}
     </header>

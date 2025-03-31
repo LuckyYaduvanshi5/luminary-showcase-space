@@ -14,7 +14,11 @@ const AboutSection = () => {
           <div className="relative">
             <div className="neon-border aspect-square overflow-hidden rounded-lg max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-tr from-neon-pink/40 to-neon-blue/40 mix-blend-overlay"></div>
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7')] bg-cover bg-center opacity-70"></div>
+              <img 
+                src="/lovable-uploads/a54288d9-46a7-41d2-81a1-e94823a33d56.png" 
+                alt="Lucky Yaduvanshi" 
+                className="w-full h-full object-cover"
+              />
             </div>
             
             {/* Decorative elements */}
@@ -30,32 +34,54 @@ const AboutSection = () => {
             
             <div className="space-y-6 text-gray-200">
               <p>
-                Hi, I'm <span className="font-bold text-white">Alex Morgan</span>, a passionate digital creator with a keen eye for design and a mind for technical solutions.
+                Hi, I'm <span className="font-bold text-white">Lucky Yaduvanshi</span>, a passionate full-stack developer based in Jaipur, India. I specialize in creating modern, high-performance websites and web applications.
               </p>
               
               <p>
-                With over <span className="text-neon-pink">5+ years of experience</span> in web development and digital design, I've helped numerous businesses transform their online presence and achieve measurable growth.
+                With <span className="text-neon-pink">2+ years of experience</span> in web development, I've helped businesses transform their online presence and achieve measurable growth through innovative digital solutions.
               </p>
               
               <p>
-                I blend technical expertise with creative vision to deliver solutions that not only look stunning but also drive real business results. My approach focuses on understanding your unique needs and crafting tailored strategies that elevate your brand.
+                Currently pursuing my BCA degree at University of Commerce College, Jaipur, I combine my academic knowledge with practical skills to deliver exceptional results for my clients.
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
                 <div className="bg-muted rounded-md px-4 py-2">
-                  <div className="text-2xl font-bold text-neon-pink">5+</div>
-                  <div className="text-sm text-gray-400">Years Experience</div>
-                </div>
-                
-                <div className="bg-muted rounded-md px-4 py-2">
-                  <div className="text-2xl font-bold text-neon-blue">50+</div>
+                  <div className="text-2xl font-bold text-neon-pink">20+</div>
                   <div className="text-sm text-gray-400">Projects Completed</div>
                 </div>
                 
                 <div className="bg-muted rounded-md px-4 py-2">
-                  <div className="text-2xl font-bold text-neon-purple">30+</div>
+                  <div className="text-2xl font-bold text-neon-blue">15+</div>
                   <div className="text-sm text-gray-400">Happy Clients</div>
                 </div>
+                
+                <div className="bg-muted rounded-md px-4 py-2">
+                  <div className="text-2xl font-bold text-neon-purple">5+</div>
+                  <div className="text-sm text-gray-400">Technologies</div>
+                </div>
+              </div>
+              
+              <div className="pt-4">
+                <h3 className="text-lg font-bold mb-2 text-white">Contact Information</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <span className="text-neon-pink">📍</span>
+                    <span>Jaipur, India</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-neon-blue">📧</span>
+                    <a href="mailto:luckyyaduvanshi5@gmail.com" className="hover:text-neon-blue transition-colors">
+                      luckyyaduvanshi5@gmail.com
+                    </a>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-neon-purple">📱</span>
+                    <a href="tel:+919667907515" className="hover:text-neon-purple transition-colors">
+                      +91-9667907515
+                    </a>
+                  </li>
+                </ul>
               </div>
               
               <Button className="mt-6 bg-transparent border border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-black transition-all">
