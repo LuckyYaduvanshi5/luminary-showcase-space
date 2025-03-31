@@ -2,11 +2,13 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, Download } from "lucide-react";
+import { useBreakpoint } from "@/hooks/use-mobile";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const isTablet = useBreakpoint('tablet');
+  
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -28,29 +30,38 @@ const Navbar = () => {
       scrolled ? 'glass-panel py-3' : 'bg-transparent py-5'
     }`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <div className="text-2xl font-bold text-glow bg-clip-text text-transparent bg-gradient-to-r from-neon-pink to-neon-blue">
+        <div className="text-xl sm:text-2xl font-bold text-glow bg-clip-text text-transparent bg-gradient-to-r from-neon-pink to-neon-blue">
           <span className="animate-glow">Lucky Yaduvanshi</span>
         </div>
         
-        {/* Desktop View - Only Contact Button */}
-        <div className="hidden md:block">
-          <Button
-            onClick={() => scrollTo('contact')}
-            className="bg-transparent border border-neon-pink text-neon-pink hover:bg-neon-pink hover:text-black neon-box-shadow transition-all"
+        {/* Resume button - visible on all devices */}
+        <div className="flex items-center gap-2">
+          <a 
+            href="/resume.pdf" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
           >
-            <Download className="mr-2 h-4 w-4" /> Resume
+            <Button
+              className={`bg-transparent border border-neon-pink text-neon-pink hover:bg-neon-pink hover:text-black neon-box-shadow transition-all ${
+                isTablet ? 'px-3 py-1 text-sm' : 'px-4 py-2'
+              }`}
+            >
+              <Download className={`${isTablet ? 'mr-1 h-3 w-3' : 'mr-2 h-4 w-4'}`} /> 
+              Resume
+            </Button>
+          </a>
+          
+          {/* Mobile Navigation Toggle */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="md:hidden text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
           </Button>
         </div>
-        
-        {/* Mobile Navigation Toggle */}
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="md:hidden text-white"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </Button>
       </div>
 
       {/* Mobile Navigation Menu */}
@@ -59,9 +70,9 @@ const Navbar = () => {
           <div className="flex flex-col space-y-4 items-center">
             <Button
               onClick={() => scrollTo('contact')}
-              className="w-32 bg-transparent border border-neon-pink text-neon-pink hover:bg-neon-pink hover:text-black neon-box-shadow transition-all"
+              className="w-32 bg-transparent border border-neon-pink text-neon-pink hover:bg-neon-pink hover:text-black transition-all"
             >
-              <Download className="mr-2 h-4 w-4" /> Resume
+              Contact Me
             </Button>
           </div>
         </div>

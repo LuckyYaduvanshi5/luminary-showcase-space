@@ -8,10 +8,13 @@ import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import { useBreakpoint } from "@/hooks/use-mobile";
 
 const Index = () => {
+  const isMobile = useBreakpoint('mobile');
+  
   useEffect(() => {
-    // Initialize animations and effects
+    // Initialize animations with a check for mobile devices to optimize performance
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -20,7 +23,7 @@ const Index = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: isMobile ? 0.05 : 0.1 } // Lower threshold for mobile devices
     );
 
     const sections = document.querySelectorAll('section');
@@ -44,11 +47,20 @@ const Index = () => {
       currentTitleIndex = (currentTitleIndex + 1) % titles.length;
     }, 2000);
     
+    // Add meta viewport tag to ensure proper mobile rendering
+    const metaViewport = document.querySelector('meta[name="viewport"]');
+    if (!metaViewport) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+      document.head.appendChild(meta);
+    }
+    
     return () => {
       sections.forEach(section => observer.unobserve(section));
       clearInterval(titleInterval);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">

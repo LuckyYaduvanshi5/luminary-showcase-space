@@ -2,11 +2,14 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Sparkles, Code, Globe, Github, Linkedin, Mail, Phone } from "lucide-react";
+import { useBreakpoint } from "@/hooks/use-mobile";
 
 const HeroSection = () => {
   const [typewriterText, setTypewriterText] = useState("");
   const [animatedBackground, setAnimatedBackground] = useState(0);
   const fullText = "Full-stack Developer & Web Designer";
+  const isMobile = useBreakpoint('mobile');
+  const isTablet = useBreakpoint('tablet');
   
   useEffect(() => {
     let currentIndex = 0;
@@ -48,66 +51,66 @@ const HeroSection = () => {
         className="absolute top-0 left-0 w-full h-full overflow-hidden transition-all duration-2000"
         style={{ background: bgGradients[animatedBackground] }}
       >
-        {/* Abstract geometric shapes */}
-        <div className="absolute w-96 h-96 rounded-full border border-white/10 top-1/4 -left-20 animate-spin-slow"></div>
-        <div className="absolute w-64 h-64 rounded-full border border-white/10 bottom-1/4 -right-20 animate-spin-reverse"></div>
+        {/* Abstract geometric shapes - hide some on mobile for performance */}
+        <div className="absolute w-96 h-96 rounded-full border border-white/10 top-1/4 -left-20 animate-spin-slow hidden sm:block"></div>
+        <div className="absolute w-64 h-64 rounded-full border border-white/10 bottom-1/4 -right-20 animate-spin-reverse hidden sm:block"></div>
         <div className="absolute w-40 h-40 rounded-md border border-white/20 top-1/3 right-1/4 rotate-45 animate-float"></div>
         
-        {/* Interactive particles */}
+        {/* Interactive particles - fewer on mobile */}
         <div className="particle-container">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(isMobile ? 10 : 20)].map((_, i) => (
             <div 
               key={i} 
               className="particle"
               style={{
                 '--x': `${Math.random() * 100}%`,
                 '--y': `${Math.random() * 100}%`,
-                '--size': `${Math.random() * 10 + 5}px`,
+                '--size': `${Math.random() * (isMobile ? 5 : 10) + 5}px`,
                 '--color': ['#8B5CF6', '#D946EF', '#0EA5E9'][Math.floor(Math.random() * 3)]
               } as React.CSSProperties}
             ></div>
           ))}
         </div>
         
-        {/* Glassmorphism circles */}
-        <div className="absolute top-1/4 left-1/3 w-72 h-72 bg-white/5 rounded-full filter blur-xl opacity-60"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-white/5 rounded-full filter blur-xl opacity-60"></div>
+        {/* Glassmorphism circles - smaller on mobile */}
+        <div className="absolute top-1/4 left-1/3 w-60 sm:w-72 h-60 sm:h-72 bg-white/5 rounded-full filter blur-xl opacity-60"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-white/5 rounded-full filter blur-xl opacity-60"></div>
       </div>
       
-      <div className="relative z-10 max-w-4xl mx-auto backdrop-blur-sm p-8 rounded-xl bg-black/30">
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <Sparkles className="h-6 w-6 text-[#D946EF]" />
-          <span className="text-sm uppercase tracking-widest text-[#D946EF]">Web Developer</span>
-          <Sparkles className="h-6 w-6 text-[#D946EF]" />
+      <div className="relative z-10 max-w-4xl mx-auto backdrop-blur-sm p-4 sm:p-8 rounded-xl bg-black/30">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4">
+          <Sparkles className="h-4 w-4 sm:h-6 sm:w-6 text-[#D946EF]" />
+          <span className="text-xs sm:text-sm uppercase tracking-widest text-[#D946EF]">Web Developer</span>
+          <Sparkles className="h-4 w-4 sm:h-6 sm:w-6 text-[#D946EF]" />
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 drop-shadow-lg">
           <span className="text-gradient-cyberpunk">Lucky Yaduvanshi</span>
         </h1>
         
-        <div className="flex items-center justify-center gap-4 mb-4">
-          <div className="h-px w-16 bg-gradient-to-r from-transparent via-[#0EA5E9] to-transparent"></div>
-          <Code className="h-5 w-5 text-[#0EA5E9]" />
-          <div className="h-px w-16 bg-gradient-to-r from-[#0EA5E9] via-[#0EA5E9] to-transparent"></div>
+        <div className="flex items-center justify-center gap-2 sm:gap-4 mb-3 sm:mb-4">
+          <div className="h-px w-12 sm:w-16 bg-gradient-to-r from-transparent via-[#0EA5E9] to-transparent"></div>
+          <Code className="h-4 w-4 sm:h-5 sm:w-5 text-[#0EA5E9]" />
+          <div className="h-px w-12 sm:w-16 bg-gradient-to-r from-[#0EA5E9] via-[#0EA5E9] to-transparent"></div>
         </div>
         
-        <h2 className="text-xl md:text-2xl text-white mb-8 h-12 font-light">
+        <h2 className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 h-8 sm:h-12 font-light">
           {typewriterText}<span className="animate-pulse">|</span>
         </h2>
         
-        <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+        <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-6 sm:mb-10">
           I create <span className="text-[#8B5CF6] font-medium">stunning</span> digital experiences that captivate your audience and drive 
           <span className="text-[#0EA5E9] font-medium"> measurable results</span> for your business.
         </p>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <Button 
             onClick={scrollToProjects}
-            className="relative overflow-hidden group px-8 py-6 bg-gradient-to-r from-[#D946EF] to-[#8B5CF6] hover:from-[#8B5CF6] hover:to-[#D946EF] text-white border-none transition-all duration-500 rounded-xl shadow-lg hover:shadow-[#D946EF]/25"
-            size="lg"
+            className="relative overflow-hidden group px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-r from-[#D946EF] to-[#8B5CF6] hover:from-[#8B5CF6] hover:to-[#D946EF] text-white border-none transition-all duration-500 rounded-xl shadow-lg hover:shadow-[#D946EF]/25 w-full sm:w-auto"
+            size={isTablet ? "default" : "lg"}
           >
             <span className="relative z-10 flex items-center gap-2">
-              <Globe className="w-5 h-5" />
+              <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
               View My Work
             </span>
           </Button>
@@ -117,59 +120,60 @@ const HeroSection = () => {
               const contactSection = document.getElementById('contact');
               if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="px-8 py-6 backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300 rounded-xl"
-            size="lg"
+            className="px-6 sm:px-8 py-5 sm:py-6 backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300 rounded-xl w-full sm:w-auto"
+            size={isTablet ? "default" : "lg"}
           >
             Let's Talk
           </Button>
         </div>
         
-        <div className="mt-12 flex items-center justify-center gap-8">
+        {/* Stats - Stacked on mobile */}
+        <div className="mt-8 sm:mt-12 grid grid-cols-3 gap-2 sm:flex sm:items-center sm:justify-center sm:gap-8">
           <div className="text-center">
-            <p className="text-sm text-gray-400">
+            <p className="text-xs sm:text-sm text-gray-400">
               Years
             </p>
-            <p className="text-xl font-bold text-white">
+            <p className="text-lg sm:text-xl font-bold text-white">
               2+
             </p>
           </div>
           <div className="text-center">
-            <p className="text-sm text-gray-400">
+            <p className="text-xs sm:text-sm text-gray-400">
               Projects
             </p>
-            <p className="text-xl font-bold text-white">
+            <p className="text-lg sm:text-xl font-bold text-white">
               20+
             </p>
           </div>
           <div className="text-center">
-            <p className="text-sm text-gray-400">
+            <p className="text-xs sm:text-sm text-gray-400">
               Clients
             </p>
-            <p className="text-xl font-bold text-white">
+            <p className="text-lg sm:text-xl font-bold text-white">
               15+
             </p>
           </div>
         </div>
         
-        <div className="mt-10 flex items-center justify-center gap-4">
+        <div className="mt-6 sm:mt-10 flex items-center justify-center gap-3 sm:gap-4">
           <a href="https://github.com/LuckyYaduvanshi5" target="_blank" rel="noopener noreferrer">
             <Button variant="ghost" size="icon" className="rounded-full text-white hover:text-neon-pink hover:bg-white/10">
-              <Github className="h-5 w-5" />
+              <Github className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           </a>
           <a href="https://www.linkedin.com/in/lucky-yaduvanshi/" target="_blank" rel="noopener noreferrer">
             <Button variant="ghost" size="icon" className="rounded-full text-white hover:text-neon-blue hover:bg-white/10">
-              <Linkedin className="h-5 w-5" />
+              <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           </a>
           <a href="mailto:luckyyaduvanshi5@gmail.com" target="_blank" rel="noopener noreferrer">
             <Button variant="ghost" size="icon" className="rounded-full text-white hover:text-neon-purple hover:bg-white/10">
-              <Mail className="h-5 w-5" />
+              <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           </a>
           <a href="tel:+919667907515" target="_blank" rel="noopener noreferrer">
             <Button variant="ghost" size="icon" className="rounded-full text-white hover:text-neon-green hover:bg-white/10">
-              <Phone className="h-5 w-5" />
+              <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           </a>
         </div>
@@ -182,7 +186,7 @@ const HeroSection = () => {
           size="icon" 
           className="text-white hover:text-[#D946EF] bg-white/10 backdrop-blur-sm rounded-full"
         >
-          <ArrowDown className="h-6 w-6" />
+          <ArrowDown className="h-5 w-5 sm:h-6 sm:w-6" />
         </Button>
       </div>
 
@@ -260,6 +264,16 @@ const HeroSection = () => {
           }
           100% {
             transform: translate(0, 0);
+          }
+        }
+        
+        @media (max-width: 640px) {
+          .text-gradient-cyberpunk {
+            background-size: 200%;
+          }
+          
+          .particle {
+            animation: moveParticle 10s infinite linear;
           }
         }
         `}

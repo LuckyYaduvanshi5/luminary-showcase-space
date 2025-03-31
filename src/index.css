@@ -69,6 +69,34 @@
   ::selection {
     @apply bg-[#D946EF] bg-opacity-50 text-white;
   }
+  
+  /* Responsive styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+  
+  /* Make text more readable on small screens */
+  @media (max-width: 640px) {
+    body {
+      @apply text-sm;
+    }
+    
+    h1 {
+      @apply text-3xl;
+    }
+    
+    h2 {
+      @apply text-2xl;
+    }
+    
+    h3 {
+      @apply text-xl;
+    }
+    
+    .section-title {
+      @apply text-2xl mb-6;
+    }
+  }
 }
 
 @layer components {
@@ -131,6 +159,14 @@
     background: linear-gradient(90deg, #D946EF, transparent);
   }
   
+  /* Responsive section title */
+  @media (max-width: 640px) {
+    .section-title::after {
+      bottom: -6px;
+      height: 2px;
+    }
+  }
+  
   .animated-border-button {
     position: relative;
     display: inline-block;
@@ -172,8 +208,25 @@
     transform: translateY(-5px);
     box-shadow: 0 10px 25px -5px rgba(217, 70, 239, 0.3);
   }
+  
+  /* Mobile-specific styling */
+  @media (max-width: 640px) {
+    .neon-border::before {
+      padding: 1px; /* Thinner border on mobile */
+    }
+    
+    .neon-box-shadow {
+      box-shadow: 0 0 3px rgba(217, 70, 239, 0.7), 
+                  0 0 6px rgba(217, 70, 239, 0.5);
+    }
+    
+    .card-hover-effect:hover {
+      transform: translateY(-3px); /* Smaller hover effect on mobile */
+    }
+  }
 }
 
+/* Keep existing animations */
 @keyframes border-flow {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -220,4 +273,30 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile optimized animations */
+@media (max-width: 640px) {
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); } /* Reduced movement on mobile */
+  }
+  
+  @keyframes pulse-neon {
+    0%, 100% { 
+      box-shadow: 0 0 3px rgba(217, 70, 239, 0.7), 0 0 6px rgba(217, 70, 239, 0.5); 
+    }
+    50% {
+      box-shadow: 0 0 6px rgba(217, 70, 239, 0.9), 0 0 12px rgba(217, 70, 239, 0.7);
+    }
+  }
+  
+  @keyframes glow {
+    0%, 100% { 
+      text-shadow: 0 0 5px rgba(217, 70, 239, 0.7), 0 0 10px rgba(217, 70, 239, 0.7);
+    }
+    50% {
+      text-shadow: 0 0 8px rgba(217, 70, 239, 0.9), 0 0 15px rgba(217, 70, 239, 0.9);
+    }
+  }
 }
