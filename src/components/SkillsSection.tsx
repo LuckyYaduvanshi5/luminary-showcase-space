@@ -120,17 +120,19 @@ const SkillsSection = () => {
         </div>
       </div>
 
-      <style jsx>{`
-        .animate-fill {
-          width: attr(data-width);
-          animation: fillBar 1.5s ease-in-out forwards;
-        }
-        
-        @keyframes fillBar {
-          from { width: 0%; }
-          to { width: var(--skill-level); }
-        }
-      `}</style>
+      <style>
+        {`
+          .animate-fill {
+            width: attr(data-width);
+            animation: fillBar 1.5s ease-in-out forwards;
+          }
+          
+          @keyframes fillBar {
+            from { width: 0%; }
+            to { width: var(--skill-level); }
+          }
+        `}
+      </style>
 
       <script dangerouslySetInnerHTML={{
         __html: `
